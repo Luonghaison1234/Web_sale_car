@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trang đăng nhập</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("https://tse4.mm.bing.net/th/id/OIP.KEs8JAYhoZNTJTHMoOl4dAHaEK?w=295&h=180&c=7&r=0&o=7&pid=1.7&rm=3");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 90vh;
+      }
+      .container {
+        width: 360px;
+        margin: 80px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-top: 12px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        margin-top: 16px;
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      #password {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Đăng nhập</h2>
+      <form id="loginForm" autocomplete="off">
+        <label>Tên người dùng</label>
+        <input type="text" id="username" autocomplete="off"/>
+
+        <label>Email</label>
+        <input type="email" id="email" autocomplete="off"/>
+
+        <label>Mật khẩu</label>
+        <input type="password" id="password" autocomplete="new-password"/>
+
+        <a href="sighup.html">Không có tài khoản?</a>
+
+        <button type="submit">Đăng nhập</button>
+        <div class="error" id="error"></div>
+      </form>
+    </div>
+
+    <script src="src/js/sighin.js"></script>
+  </body>
+</html>
