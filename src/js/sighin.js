@@ -1,36 +1,40 @@
-document.getElementById("loginForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const username = document.getElementById('username').value
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-  const errorDiv = document.getElementById("error");
+// Get the login form from the page
+const loginForm = document.getElementById("loginForm");
+localStorage.setItem("isLoggedIn", "false");
 
-  errorDiv.textContent = "";
+// Only run this code if we are on the login page
+if (loginForm) {
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Stop page reload
 
-  if (!email || !password || !username) {
-    errorDiv.textContent = "Vui lòng nhập đầy đủ thông tin";
-    return;
-  }
+    // Get user input values
+    const username = loginUsername.value;
+    const email = loginEmail.value;
+    const password = loginPassword.value;
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+    // Clear old error messages
+    loginError.textContent = "";
 
-  // 👉 TÌM USER PHÙ HỢP
-  const user = users.find((u) => u.email === email && u.password === password && u.username === username);
+    // Get users list from localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (!user) {
-    errorDiv.textContent = "Sai username, email hoặc mật khẩu";
-    return;
-  }
+    // Find a matching user
+    const user = users.find(
+      (u) =>
+        u.username === username && u.email === email && u.password === password,
+    );
 
-  // 👉 LƯU USER ĐANG ĐĂNG NHẬP
-  localStorage.setItem("isLoggedIn", "true");
-  localStorage.setItem("currentUser", JSON.stringify(user));
+    // If user not found, show error
+    if (!user) {
+      loginError.textContent = "Invalid login details";
+      return;
+    }
 
-  alert("Đăng nhập thành công!");
-  window.location.replace("home.html");
+    // Save login state
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("currentUser", JSON.stringify(user));
 
-
-  window.addEventListener("load", function () {
-    document.getElementById("loginForm").reset();
+    // Redirect to home page
+    window.location.href = "home.html";
   });
-});
+}

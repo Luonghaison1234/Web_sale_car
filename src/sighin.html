@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Trang đăng nhập</title>
+    <title>Login</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -19,6 +19,13 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .container input {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid black;
+        width: 100%;
+        font-size: 16px;
       }
       h2 {
         text-align: center;
@@ -51,32 +58,31 @@
         font-size: 14px;
         margin-top: 8px;
       }
-
-      #password {
+      #loginPassword {
         margin-bottom: 10px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2>Đăng nhập</h2>
+      <h2>Login</h2>
       <form id="loginForm" autocomplete="off">
-        <label>Tên người dùng</label>
-        <input type="text" id="username" autocomplete="off"/>
+        <label>Username</label>
+        <input type="text" id="loginUsername" autocomplete="off" />
 
         <label>Email</label>
-        <input type="email" id="email" autocomplete="off"/>
+        <input type="email" id="loginEmail" autocomplete="off" />
 
-        <label>Mật khẩu</label>
-        <input type="password" id="password" autocomplete="new-password"/>
+        <label>Password</label>
+        <input type="password" id="loginPassword" autocomplete="new-password" />
 
-        <a href="sighup.html">Không có tài khoản?</a>
+        <a href="sighup.html">No account?</a>
 
-        <button type="submit">Đăng nhập</button>
-        <div class="error" id="error"></div>
+        <button type="submit">Login</button>
+        <div class="error" id="loginError"></div>
       </form>
     </div>
 
-    <script src="src/js/sighin.js"></script>
+    <script src="js/sighin.js"></script>
   </body>
 </html>

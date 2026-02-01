@@ -1,48 +1,49 @@
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+// Get the register form from the page
+const registerForm = document.getElementById("registerForm");
 
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const errorDiv = document.getElementById("error");
+// Only run this code if we are on the register page
+if (registerForm) {
+  registerForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Stop the page from refreshing
 
-    errorDiv.textContent = "";
+    // Get user input values
+    const username = regUsername.value.trim();
+    const email = regEmail.value.trim();
+    const password = regPassword.value;
+    const confirm = confirmPassword.value;
 
-    if (!username || !email || !password || !confirmPassword) {
-      errorDiv.textContent = "Vui lòng điền đầy đủ thông tin";
+    // Clear any old error messages
+    regError.textContent = "";
+
+    // Check if all fields are filled
+    if (!username || !email || !password || !confirm) {
+      regError.textContent = "Please fill in all fields";
       return;
     }
 
-    if (password !== confirmPassword) {
-      errorDiv.textContent = "Mật khẩu không khớp";
+    // Check if passwords match
+    if (password !== confirm) {
+      regError.textContent = "Passwords do not match";
       return;
     }
 
-    // 👉 LẤY DANH SÁCH USER (NẾU CHƯA CÓ → MẢNG RỖNG)
+    // Get saved users from localStorage (or empty array if none)
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // 👉 KIỂM TRA EMAIL TRÙNG
-    const isExist = users.some(user => user.email === email);
-    if (isExist) {
-      errorDiv.textContent = "Email đã tồn tại";
+    // Check if email already exists
+    if (users.some((u) => u.email === email)) {
+      regError.textContent = "Email already exists";
       return;
     }
 
-    // 👉 THÊM USER MỚI
-    users.push({
-      username,
-      email,
-      password,
-    });
+    // Add new user to array
+    users.push({ username, email, password });
 
-    // 👉 LƯU LẠI VÀO LOCALSTORAGE
+    // Save updated users array to localStorage
     localStorage.setItem("users", JSON.stringify(users));
 
-    document.getElementById("registerForm").reset();
-
-    alert("Đăng ký thành công!");
+    // Show success message and go to login page
+    alert("Registration successful!");
     window.location.href = "sighin.html";
   });
+}

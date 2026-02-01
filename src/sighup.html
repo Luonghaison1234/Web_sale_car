@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Trang đăng ký</title>
+    <title>Register</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -19,6 +19,13 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .container input {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid black;
+        width: 100%;
+        font-size: 16px;
       }
       h2 {
         text-align: center;
@@ -51,31 +58,34 @@
         font-size: 14px;
         margin-top: 8px;
       }
-      #confirmPassword{margin-bottom: 10px;}
+      #confirmPassword {
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2>Đăng ký</h2>
+      <h2>Register</h2>
       <form id="registerForm">
-        <label>Tên người dùng</label>
-        <input type="text" id="username" />
+        <label>Username</label>
+        <input type="text" id="regUsername" />
 
         <label>Email</label>
-        <input type="email" id="email" />
+        <input type="email" id="regEmail" />
 
-        <label>Mật khẩu</label>
-        <input type="password" id="password" />
+        <label>Password</label>
+        <input type="password" id="regPassword" />
 
-        <label>Nhập lại mật khẩu</label>
+        <label>Confirm Password</label>
         <input type="password" id="confirmPassword" />
 
-        <a href="sighin.html">Có tài khoản?</a>
+        <a href="sighin.html">Already have an account?</a>
 
-        <button type="submit">Đăng ký</button>
-        <div class="error" id="error"></div>
+        <button type="submit">Register</button>
+        <div class="error" id="regError"></div>
       </form>
     </div>
-    <script src="src/js/sighup.js"></script>
+
+    <script src="js/sighup.js"></script>
   </body>
 </html>
