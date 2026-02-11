@@ -1,135 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AutoDrive - Buy Car</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>AutoDrive - Buy Car</title>
 
-<style>
-body{
-    font-family: Arial;
-    background:#f4f4f4;
-    margin:0;
-}
+    <style>
+      body {
+        font-family: Arial;
+        background: #f4f4f4;
+        margin: 0;
+      }
 
-header{
-    background:#0a2540;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
+      header {
+        background: #0a2540;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
 
-.buy-container{
-    max-width:600px;
-    background:white;
-    margin:40px auto;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
+      .buy-container {
+        max-width: 600px;
+        background: white;
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-}
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
 
-button{
-    width:100%;
-    padding:15px;
-    background:#0a2540;
-    color:white;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-    margin-bottom:15px;
-    transition:0.3s;
-}
+      button {
+        width: 100%;
+        padding: 15px;
+        background: #0a2540;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        transition: 0.3s;
+      }
 
-button:hover{
-    background:#163b63;
-}
+      button:hover {
+        background: #163b63;
+      }
 
-/* Back button style */
-.back{
-    background:#ff2020;
-}
+      /* Back button style */
+      .back {
+        background: #ff2020;
+      }
 
-.back:hover{
-    background:#e6403d;
-}
+      .back:hover {
+        background: #e6403d;
+      }
 
-.car-box{
-    background:#eee;
-    padding:15px;
-    border-radius:8px;
-    margin-bottom:20px;
-}
-</style>
-</head>
+      .car-box {
+        background: #eee;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      footer {
+        background: #0a2540;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <header>
+      <h1>Complete Your Purchase</h1>
+    </header>
 
-<header>
-    <h1>Complete Your Purchase</h1>
-</header>
-
-<div class="buy-container">
-
-    <div class="car-box">
+    <div class="buy-container">
+      <div class="car-box">
         <h3 id="carName"></h3>
         <p id="carPrice"></p>
+      </div>
+
+      <h3>Your Information</h3>
+
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <textarea
+        id="address"
+        placeholder="Delivery Address"
+        rows="4"
+        required
+      ></textarea>
+
+      <button onclick="submitOrder()">Confirm Purchase</button>
+      <button class="back" onclick="goBack()">Back</button>
     </div>
-
-    <h3>Your Information</h3>
-
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="tel" id="phone" placeholder="Phone Number" required>
-    <textarea id="address" placeholder="Delivery Address" rows="4" required></textarea>
-
-    <button onclick="submitOrder()">Confirm Purchase</button>
-    <button class="back" onclick="goBack()">Back</button>
-
-</div>
-
-<script>
-// Get car info from URL
-const params = new URLSearchParams(window.location.search);
-const car = params.get("car");
-const price = params.get("price");
-
-document.getElementById("carName").innerText = car;
-document.getElementById("carPrice").innerText = "Price: " + price;
-
-function submitOrder(){
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const address = document.getElementById("address").value;
-
-    if(email === "" || phone === "" || address === ""){
-        alert("Please fill all fields!");
-        return;
-    }
-
-    alert(
-        "Order Successful!\n\n" +
-        "Car: " + car + "\n" +
-        "Price: " + price + "\n" +
-        "Email: " + email + "\n" +
-        "Phone: " + phone + "\n" +
-        "Address: " + address
-    );
-
-    // Redirect back to car page
-    window.location.href = "car.html";
-}
-
-function goBack(){
-    window.location.href = "car.html";
-}
-</script>
-
-</body>
+    <footer>
+      <p>© 2026 AutoDrive | Buy Cars Easily</p>
+    </footer>
+    <script src="js/buy.js"></script>
+  </body>
 </html>
